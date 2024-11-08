@@ -1,0 +1,45 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+nav{
+    background-color: rgb(23, 37, 54);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+   
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin: 0 61px;
+}
+a:hover{
+    text-decoration: underline;
+    
+}
+.joinUs{
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    color:rgb(23, 37, 54) ;
+    margin: 0 20px;
+}
+.login{
+    background-color:rgb(23, 37, 54)  ;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    color:white ;
+}
+.title{
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+  
+}
