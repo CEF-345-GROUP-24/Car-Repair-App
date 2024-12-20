@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: silver;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+ 
+}
+.carContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #003366;
+    
+}
+.image {
+    mix-blend-mode: multiply;
+    width: 100%; 
+    height: auto; 
+}
+.signUp{
+    padding: 100px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    
+}
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+input{
+    flex: 1;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+}
+.inputContainer2{
+    display: flex;
+    border: 1px solid #003366;
+    border-radius: 5px;
+
+}
+.inputContainer2:focus-within{
+    border: 3px solid #003366;
+}
+.signUpButton{
+    background-color: #003366;
+    color: white;
+    flex: 1;
+    border-radius: 30px;
+    margin: 20px;
+    padding: 10px 10px;
+    border: none;
+}
