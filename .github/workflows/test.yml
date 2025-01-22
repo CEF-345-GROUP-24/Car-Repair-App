@@ -25,6 +25,9 @@ jobs:
         working-directory: ./backend # Change the working directory to the backend folder
         run: npm install
 
+      - name: Set executable permissions for Jest binary
+        run: chmod +x ./backend/node_modules/.bin/jest # Ensure Jest has executable permissions
+
       - name: Run Jest tests for the backend
         working-directory: ./backend # Run tests in the backend directory
-        run: npm test
+        run: npx jest # Use npx to run Jest
