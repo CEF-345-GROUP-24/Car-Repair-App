@@ -8,6 +8,15 @@ const PORT = 3000;
 
 app.use(cors());
 app.use(express.json()); // Middleware to parse JSON bodies
+const mysql2 = require('mysql2/promise'); // Use promise-based API
+
+// Create a pool of connections
+const pool = mysql2.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: 'codeMan2.0',
+    database: 'carprodb',
+});
 
 // MySQL connection
 const db = mysql.createConnection({
@@ -123,3 +132,5 @@ app.post('/login', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+
+module.exports = {app,pool}; 
