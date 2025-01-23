@@ -1,25 +1,6 @@
 const request = require('supertest');
-const { app} = require('../server.js');
+const { app,pool} = require('../server.js');
 const bcrypt = require('bcryptjs');
-
-// In your database connection setup (e.g., in `server.js` or `db.js`)
-const mysql = require('mysql2');
-
-const dbConfig = process.env.NODE_ENV === 'test' ?
-  {
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'root_password',
-    database: 'test_db',
-  } :
-  {
-    host: 'your-prod-db-host',
-    user: 'prod-user',
-    password: 'prod-password',
-    database: 'prod_db',
-  };
-
-const pool = mysql.createPool(dbConfig);
 
 
 
