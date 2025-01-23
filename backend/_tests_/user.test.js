@@ -1,6 +1,6 @@
 const request = require('supertest');
 const { app, pool } = require('../server.js');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 // Clean up after all tests
 afterAll(async () => {
