@@ -1,14 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/home.css'
 import car3 from "../assets/car3.jpg"
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 function Home() {
+   // appointment.name, appointment.email,appointment.phone,
+   //appointment.date,appointment.time,appointment.service
+    const [name,setName]=useState();
+    const [email,setEmail]=useState();
+    const [phone,setPhone]=useState();
+    const [date,setDate]=useState();
+    const [time,setTime]=useState();
+    const [service,setService]=useState("oil-change");
+    const [message,setMessage]=useState();
+    const [messageColor,setMessageColor]=useState();
     const navigate=useNavigate();
     const handleLogin=()=>{
         navigate('/login');
     }
     const handleSignUp=()=>{
         navigate('/signUp');
+    }
+    const handleBookAppointment=async(e)=>{
+        e.preventDefault();
+      
+    try {
+      const response = await axios.post('http://localhost:3000/bookAppointment', {
+
+        name, email,phone,date,time,service
+      });
+  
+      console.log("Appointment booked successfully.", response.data);
+  
+      
+  
+       setMessage("Appointment booked successfully!");
+        setMessageColor("green");
+  } catch (error) {
+      
+      const errorMessage = error.response ? error.response.data.message : error.message;
+      console.error("Error:", error);
+      setMessage(errorMessage); 
+      setMessageColor("red");
+  }
+      
     }
   return (
     <div>
@@ -59,22 +94,34 @@ function Home() {
     <form className="appointment-form">
         <h2>BOOK AN APPOINTMENT</h2>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required/>
+        <input type="text" id="name" name="name" required
+            onChange={e=>setName(e.target.value)}
+        />
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required/>
+        <input type="email" id="email" name="email" required
+            onChange={e=>setEmail(e.target.value)}
+        />
 
         <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" required/>
+        <input type="tel" id="phone" name="phone" required
+            onChange={e=>setPhone(e.target.value)}
+        />
 
         <label for="date">Preferred Date:</label>
-        <input type="date" id="date" name="date" required/>
+        <input type="date" id="date" name="date" required
+            onChange={e=>setDate(e.target.value)}    
+        />
 
         <label for="time">Preferred Time:</label>
-        <input type="time" id="time" name="time" required/>
+        <input type="time" id="time" name="time" required
+            onChange={e=>setTime(e.target.value)}    
+        />
 
         <label for="service">Service Needed:</label>
-        <select id="service" name="service" required>
+        <select id="service" name="service" required
+            onChange={e=>setService(e.target.value)}    
+        >
             <option value="oil-change">Oil Change</option>
             <option value="tire-service">Tire Service</option>
             <option value="brake-repair">Brake Repair</option>
@@ -82,8 +129,9 @@ function Home() {
             <option value="brake-repair">Collision repair</option>
             <option value="full-checkup">Full Checkup</option>
         </select>
-
-        <button type="submit" className="submit-button">Book Appointment</button>
+        <div className="messageBox" style={{color:messageColor}}>{message}</div>
+        <button type="submit" className="submit-button"
+            onClick={(e)=>handleBookAppointment(e)}>Book Appointment</button>
     </form>
     <section className="about">
         <h2>About Us</h2>
